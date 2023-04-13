@@ -1,0 +1,40 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="yourdetails()";>submit</button>    
+    <script>
+        function yourdetails(){
+            let details = "Name";
+
+            switch (details){
+                case "Name": {  //{}tag is used for  block scopping message element from other cases
+                        let message = "Ishu Sharma";
+                    console.log(message);
+                    break;
+                }
+            case "Age":{
+                        let message = "23";
+                        console.log(message);
+                        break;
+            }
+            case "gender":{
+                    let message = "Male";                        //switch case statments are used instead of multiple if else statments to increase simplicity and readability
+                    console.log(message);
+                    break;
+            }
+            default: {
+                let message = "nothing found";    //break is applied = when condition is fullfilled it breaks out of the statment
+                console.log(message);             // continue is applied then it does not break out of the loop but only declines which are not satisfied   
+                break;
+            }
+            }
+        }
+    </script>
+</body>
+</html>
