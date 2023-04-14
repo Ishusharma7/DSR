@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="lego()";>show everything</button>
+  <script>
+    'use strict';
+    function lego () {
+      let person = {
+        firstName : 'ishu',
+        lastName : 'sharma',
+      }
+      let fullName = function (homeTown) {
+      return (this.firstName + " " + this.lastName  + " from "   +homeTown)
+      }
+
+
+      let person2 = {
+        firstName : 'akshay',
+        lastName : 'kumar',
+      }
+      console.log(fullName.call(person, 'amritsar'));
+      console.log(fullName.call(person2, 'pune'));
+      console.log(fullName.apply(person, ['amritsar']));
+      console.log(fullName.apply(person2, ['pune']));
+      let myName = fullName.bind(person, 'amritsar');
+      let hisName = fullName.bind(person2, 'pune');
+      console.log(myName());
+      console.log(hisName());
+      
+
+    }
+  </script>
+  
+</body>
+</html>
