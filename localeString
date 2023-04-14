@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="carss()";>its working</button>
+    <script>
+      function carss(){
+        let product = {
+        Name : 'car',
+        listPrice : 12000000,
+        standardPrice : 100000,
+
+            grossProfit : function hero () {
+                return (this.listPrice - this.standardPrice)
+                .toLocaleString('en-US' , {
+                    style: 'currency', currency: 'USD'
+                });
+            }
+      };
+      console.log(product.grossProfit());
+    }
+
+    </script>
+</body>
+</html>
