@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helper</title>
+</head>
+<body>
+    <button onclick="helperFunction()";>lets go</button>
+    <script>
+        'use strict';
+        function helperFunction () {
+            let Name = 'Ishu';
+            let Age = 23;
+            let birth = new Date();
+            let Alive = true;
+            let result;
+            let value = null;
+            
+            //check using boolean
+            console.log('is Name an array : ' +isArray(Name));
+            console.log('is birth date type : ' +isDate(birth));
+            // check whether its null or undefined
+            console.log('result is : ' +isNullOrUndefined(result));
+            console.log('value is : ' +isNullOrUndefined(value));
+            //describing function
+            function isNullOrUndefined (value) {
+                return value === null || value === undefined;
+            }
+            function isArray(value) {
+                return value.constructor.toString().indexOf('Name') > -1;
+            }
+            function isDate(value){
+                return value.constructor.toString().indexOf('Date') > -1;
+            }
+
+
+        }
+    </script>
+    
+</body>
+</html> 
