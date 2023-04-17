@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="copy()";>START</button>
+    
+    <script>
+        function copy(){
+            let person1 = [
+                {
+                name : 'Ishu',
+                Age : 23,
+                }
+            ];
+            let person2 = [{
+                name : 'arvind',
+                Age : 32,
+            }];
+
+            // copy using + operator
+            let everyone = person1 + person2;
+            console.log(everyone.length + "used + operator");
+
+            //copy using concat
+            let people = person1.concat(person2);
+            console.log(people.length + "using concat");
+
+            //copy using spread operator
+            let all = [...person1,...person2];
+            console.log(all.length +"using spread operator");
+        }
+    </script>
+</body>
+</html>
