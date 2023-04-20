@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // default parameter
+        function hell(name = 'Ishu'){
+            console.log('hello ' +name);
+        }s
+            hell();
+            hell('zoro');
+        
+
+        // //rest parameter
+        let lora = function gret(...names){
+                names.forEach(name => console.log('hi ' +name));
+
+        }
+        lora('ishu','arvind','nikhil');
+
+        // //spread
+        function display(char1, char2, char3){
+            console.log(char1, char2, char3);
+        }
+        let numbers = '1233456';
+        display(...numbers);
+    </script>
+    
+</body>
+</html>
