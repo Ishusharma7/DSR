@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        function * timestampGenerator(){    //between function and name '*' then it is generator
+            var ts = Date.now();
+            console.log('original ts : ' +ts ); // we can add adittional yields but then have to store additttional const for the it.next
+            var additionaltime = yield; 
+            console.log('additionaltime : ' +additionaltime);
+            if (additionaltime){
+                ts = ts + additionaltime;
+            }
+            console.log('updated ts ' +ts);
+        }
+       const it = timestampGenerator();
+       it.next();
+       it.next(1000*60);  //passing value through generator with help of yield
+
+
+    </script>
+</body>
+</html>
