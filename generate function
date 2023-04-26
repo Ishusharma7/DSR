@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        function * timestampGenerator(){    //between function and name '*' then it is generator
+            console.log(Date.now());
+            yield; // pauses the generator function
+            console.log('continue execution');
+        }
+       const it = timestampGenerator();
+       it.next();
+       it.next();    // code continue because of it.next
+
+
+    </script>
+</body>
+</html>
