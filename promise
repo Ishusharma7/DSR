@@ -1,0 +1,107 @@
+import setText, { appendText } from "./results.mjs";
+
+export function timeout(){            //call only one time         axios is build using promises all the declared variables are promise
+    const wait = new promise ((resolve) =>{
+        setTimeout (() => {
+            resolve('Timeout!');
+        },1500); 
+    });
+
+    wait.then(Text => setText(Text));
+}
+
+export function interval(){    // call multiple time
+    let counter = 0;
+    const wait = new promise ((resolve) =>{
+        setInterval (() => {
+            console.log('interval');
+            resolve(`Timeout! ${++counter}`);
+        },1500); 
+    });
+
+    wait.then(Text => setText(Text))
+    .finally(() => appendText(` --Done ${counter}`));
+}
+
+export function clearIntervalChain(){
+    let counter = 0;
+    let interval;
+    const wait = new promise ((resolve) =>{
+        interval = setInterval (() => {
+            console.log('interval');
+            resolve(`Timeout! ${++counter}`);
+        },1500); 
+    });
+
+    wait.then(Text => setText(Text))
+    .finally(() => clearInterval(interval));
+}
+
+export function xhr(){
+    let request = new promise((resolve,reject) => {
+        let xhr = new XMLHttpRequest ();
+        xhr.open("GET", "http://localhost:3000/users/7");
+        xhr.onload = () => {
+    if (xhr.status === 200){
+            resolve(xhr.responseText);
+        }
+    else{
+            reject(xhr.statusText);
+        }
+    }
+        xhr.onerror = () => reject('Request Failed');
+        xhr.send();
+    });
+    request.then(result => setText(result))
+    .catch(reason => setText(reason));
+}
+
+export function allPromises(){
+    let categories = axios.get("http://localhost:3000/itemCategories");
+    let statuses = axios.get("http://localhost:3000/orderStatuses");
+    let userTypes = axios.get("http://localhost:3000/userTypes");
+    let addressTypes = axios.get("http://localhost:3000/addressTypes")
+
+    promise.all([categories,statuses,userTypes,addressTypes])   //will wait for all the promises to finish or 1 promise to fail
+    .then(([cat,stat,type,address])  => {
+        setText("");
+
+        appendText(JSON.stringify(cat.data));
+        appendText(JSON.stringify(stat.data));
+        appendText(JSON.stringify(type.data));
+        appendText(JSON.stringify(address.data));
+    })
+        .catch (reason =>{
+            setText(reason);
+        });
+}
+
+export function allSettled(){
+    let categories = axios.get("http://localhost:3000/itemCategories");
+    let statuses = axios.get("http://localhost:3000/orderStatuses");
+    let userTypes = axios.get("http://localhost:3000/userTypes");
+    let addressTypes = axios.get("http://localhost:3000/addressTypes")
+
+    promise.allSettled([categories,statuses,userTypes,addressTypes])   //will wait for all the promises to finish either fullfilled or settled
+    .then((values)  => {
+
+        let result = values.map(v =>{
+            if (v.status === 'fullfilled'){
+                return `fullfilled : ${JSON.stringify(v.value.data[0])}  `; 
+            }
+            return `rejected : ${v.reason.message} `;
+        });
+
+    }) .catch (reason =>{
+            setText(reason);
+        });
+}
+
+export function race(){       //race stops when first promise is settled if with rejection you wont get the data
+    let users = axios.get("http://localhost:3000/users");
+    let backup = axios.get("http://localhost:3001/users");
+
+    promise.race([users,backup])
+    .then(users => setText(JSON.stringify(users.data)))
+    .catch(reason => setText(reason));
+}
